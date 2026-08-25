@@ -247,7 +247,7 @@ SetNumber, Transaction, ActiveServers, ContactServers
 
 ```
 Client → Contact Server (Leader)
-         ↓
+                   ↓
    1. Fetch longest history from replicas
    2. Update local DB with missing transactions
    3. Prepare Phase (send longest history to replicas)
@@ -263,14 +263,14 @@ Client → Contact Server (Leader)
 ```
 Client → Source Contact Server (async) ──┐
 Client → Dest Contact Server (async)   ──┼─→ Both complete
-                                          │
-                                          ↓
+                                         │
+                                         ↓
                                    2PC Decision
-                                          │
+                                         │
                     ┌────────────────────┴────────────────────┐
-                    ↓                                          ↓
+                    ↓                                         ↓
            2PC Commit/Abort                           2PC Commit/Abort
-         (Source Cluster)                            (Dest Cluster)
+           (Source Cluster)                            (Dest Cluster)
 ```
 
 **Cross-Shard Steps:**
@@ -562,10 +562,6 @@ sets, err := csv_parser.ParseCSV("your_test_file.csv")
    - Verify servers are running
    - Check server addresses in `shared/serveraddress.go`
    - Ensure network connectivity
-
-## License
-
-[Specify your license here]
 
 ## Authors
 
