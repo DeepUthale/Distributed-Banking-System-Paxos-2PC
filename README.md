@@ -36,18 +36,18 @@ This distributed banking system simulates a multi-cluster, multi-server banking 
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│                    Client Application                        │
-│                    (main.go)                                 │
+│                    Client Application                       │
+│                    (main.go)                                │
 └──────────────────────┬──────────────────────────────────────┘
                        │
         ┌──────────────┴──────────────┐
         │                             │
-   ┌────▼────┐                  ┌────▼────┐
+   ┌────▼────┐                  ┌────-▼───┐
    │ Cluster │                  │ Cluster │
    │    C1   │                  │    C2   │
    └────┬────┘                  └────┬────┘
-        │                             │
-   ┌────┴────┐                   ┌────┴────┐
+        │                            │
+   ┌────┴────┐                   ┌───┴-────┐
    │ Server  │                   │ Server  │
    │   S1    │                   │   S4    │
    │ Server  │                   │ Server  │
@@ -379,7 +379,7 @@ Client → Dest Contact Server (async)   ──┼─→ Both complete
 | transaction_id  | TEXT    | Primary key, UUID                    |
 | source          | INTEGER | Source client ID                     |
 | destination     | INTEGER | Destination client ID                |
-| amount          | INTEGER | Transaction amount                  |
+| amount          | INTEGER | Transaction amount                   |
 | ballot_number   | INTEGER | Paxos ballot number                  |
 | contact_server  | INTEGER | Contact server index                 |
 | status          | TEXT    | Transaction status ("", "P", "C")    |
